@@ -3,11 +3,15 @@ package trackingorder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Raktar {
-    private List<Termek> termekek = new ArrayList<Termek>();
+public class WareHouse {
+    private List<Product> products = new ArrayList<Product>();
+
+    private Product findTermekById(Integer id){
+        return null;
+    }
 
     public void addTermek( Integer id, String name ){
-        termekek.add( id , new Termek(  ) );
+        products.add( id , new Product(  ) );
     }
 
     public void plusKeszlet( Integer id, Integer darab ){

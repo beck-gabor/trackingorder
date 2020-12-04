@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    private Vevo vevo;
-    private List<Termek> termekek = new ArrayList<Termek>();
+    private Customer customer;
+    private List<OrderItem> termekek = new ArrayList<OrderItem>();
     private String futarUzenet;
 
     private DELIVER_MODE KezbesitesiMod;
@@ -13,10 +13,14 @@ public class Order {
     private PAY_MODE fizetesimod;
 
 
-    public Order(Vevo vevo, DELIVER_MODE kezbesitesiMod, PAY_MODE fizetesimod) {
-        this.vevo = vevo;
+    public Order(Customer customer, DELIVER_MODE kezbesitesiMod, PAY_MODE fizetesimod) {
+        this.customer = customer;
         KezbesitesiMod = kezbesitesiMod;
         this.fizetesimod = fizetesimod;
+
+        if ( fizetesimod == PAY_MODE.CASHE & kezbesitesiMod == DELIVER_MODE.INSHOP){
+            statusz= DELIVER_STATUS.DELIVERED;
+        }
     }
 
     public String getFutarUzenet() {
@@ -27,12 +31,12 @@ public class Order {
         this.futarUzenet = futarUzenet;
     }
 
-    public Vevo getVevo() {
-        return vevo;
+    public Customer getVevo() {
+        return customer;
     }
 
-    public void setVevo(Vevo vevo) {
-        this.vevo = vevo;
+    public void setVevo(Customer customer) {
+        this.customer = customer;
     }
 
     public DELIVER_MODE getKezbesitesiMod() {

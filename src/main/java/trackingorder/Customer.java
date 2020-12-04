@@ -1,12 +1,12 @@
 package trackingorder;
 
-public class Vevo {
+public class Customer {
     private String lackim;
     private String telefonszam;
     private String nev;
     private String emailCim;
 
-    public Vevo(String lackim, String telefonszam, String nev, String emailCim) {
+    public Customer(String lackim, String telefonszam, String nev, String emailCim) {
         this.lackim = lackim;
         this.telefonszam = telefonszam;
         this.nev = nev;
