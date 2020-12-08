@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Order {
     private Customer customer;
-    private List<OrderItem> termekek = new ArrayList<OrderItem>();
+    private List<OrderItem> termekek = new ArrayList<>();
     private String futarUzenet;
 
     private DELIVER_MODE KezbesitesiMod;
@@ -18,7 +18,7 @@ public class Order {
         KezbesitesiMod = kezbesitesiMod;
         this.fizetesimod = fizetesimod;
 
-        if ( fizetesimod == PAY_MODE.CASHE & kezbesitesiMod == DELIVER_MODE.INSHOP){
+        if ( fizetesimod == PAY_MODE.CASH & kezbesitesiMod == DELIVER_MODE.INSHOP){
             statusz= DELIVER_STATUS.DELIVERED;
         }
     }

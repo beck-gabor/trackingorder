@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WareHouse {
-    private List<Product> products = new ArrayList<Product>();
+    private List<Stock> stock = new ArrayList<>();
 
-    private Product findTermekById(Integer id){
+    private Stock findStockById(Integer id){
         return null;
     }
 
-    public void addTermek( Integer id, String name ){
-        products.add( id , new Product(  ) );
+    public void addTermek( Product product , Integer amount ){
+        stock.add(  new Stock( product, amount ) );
     }
 
     public void plusKeszlet( Integer id, Integer darab ){
