@@ -170,7 +170,7 @@
 <XPD:ATTR name="Left" type="integer">284</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">48</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">161</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">126</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">134</XPD:ATTR>
 <XPD:REF name="Model">H+AIo0L2W0SHl+zdjuc13QAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="iX0LGMkYCkWBfmaWLV2rlAAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="UAZxzyPZ7U2q0Y1+ZcjW+QAA">
@@ -229,8 +229,8 @@
 <XPD:OBJ name="OwnedViews[6]" type="UMLClassView" guid="J3PqiC2ejUmvsT6C0ULcfAAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">588</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">52</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">584</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">96</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">203</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">89</XPD:ATTR>
 <XPD:REF name="Model">ZCPIhxcykkCIuUsjZXyFUQAA</XPD:REF>
@@ -519,7 +519,7 @@ FAILED_DELIVERY - Nem sikerült a házhozszállítás, futárnak kommentet fűz 
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="LineStyle" type="LineStyleKind">lsRectilinear</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">688,328;688,140</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">688,328;688,184</XPD:ATTR>
 <XPD:REF name="Model">tRPR5qMxqEeEKU7deT5Q6QAA</XPD:REF>
 <XPD:REF name="Head">J3PqiC2ejUmvsT6C0ULcfAAA</XPD:REF>
 <XPD:REF name="Tail">ZfMVqPsdHkeyg1cJnQNsnQAA</XPD:REF>
@@ -546,7 +546,7 @@ FAILED_DELIVERY - Nem sikerült a házhozszállítás, futárnak kommentet fűz 
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="LineStyle" type="LineStyleKind">lsRectilinear</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">976,138;790,138</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">976,138;786,138</XPD:ATTR>
 <XPD:REF name="Model">+uhSoztO606McgGooUGBSAAA</XPD:REF>
 <XPD:REF name="Head">J3PqiC2ejUmvsT6C0ULcfAAA</XPD:REF>
 <XPD:REF name="Tail">rSvqu+tdOESO4Hni6trBLwAA</XPD:REF>
@@ -688,7 +688,7 @@ FAILED_DELIVERY - Nem sikerült a házhozszállítás, futárnak kommentet fűz 
 <XPD:REF name="Views[1]">ByOSO5wqJUuhd9PEta3NlQAA</XPD:REF>
 <XPD:REF name="Views[2]">TgdkBraGeUO0vZkev+3n3gAA</XPD:REF>
 <XPD:REF name="Views[3]">rrgGhJOq7keleUiJ0Yt6FwAA</XPD:REF>
-<XPD:ATTR name="#Operations" type="integer">4</XPD:ATTR>
+<XPD:ATTR name="#Operations" type="integer">6</XPD:ATTR>
 <XPD:OBJ name="Operations[0]" type="UMLOperation" guid="zJTmhuy/QESQrS4Br6jQUQAA">
 <XPD:ATTR name="Name" type="string">plusKeszlet</XPD:ATTR>
 <XPD:REF name="Owner">H+AIo0L2W0SHl+zdjuc13QAA</XPD:REF>
@@ -703,6 +703,14 @@ FAILED_DELIVERY - Nem sikerült a házhozszállítás, futárnak kommentet fűz 
 </XPD:OBJ>
 <XPD:OBJ name="Operations[3]" type="UMLOperation" guid="L4HV03uNYU+RurD3YgZRoQAA">
 <XPD:ATTR name="Name" type="string">addTermek</XPD:ATTR>
+<XPD:REF name="Owner">H+AIo0L2W0SHl+zdjuc13QAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Operations[4]" type="UMLOperation" guid="yUouQqT680KJN40GCISX8gAA">
+<XPD:ATTR name="Name" type="string">foglal</XPD:ATTR>
+<XPD:REF name="Owner">H+AIo0L2W0SHl+zdjuc13QAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Operations[5]" type="UMLOperation" guid="mcn2/L6uUUWeQWshEJF8oAAA">
+<XPD:ATTR name="Name" type="string">felszabadit</XPD:ATTR>
 <XPD:REF name="Owner">H+AIo0L2W0SHl+zdjuc13QAA</XPD:REF>
 </XPD:OBJ>
 <XPD:ATTR name="#Attributes" type="integer">1</XPD:ATTR>
@@ -768,7 +776,7 @@ FAILED_DELIVERY - Nem sikerült a házhozszállítás, futárnak kommentet fűz 
 <XPD:ATTR name="#Parameters" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="utJAG5SOmkqBOgJLEKTiswAA">
 <XPD:ATTR name="DirectionKind" type="UMLParameterDirectionKind">pdkReturn</XPD:ATTR>
-<XPD:ATTR name="TypeExpression" type="string">Integer</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Double</XPD:ATTR>
 <XPD:REF name="BehavioralFeature">vHWhWnIFqEqVhscfWVYksgAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
