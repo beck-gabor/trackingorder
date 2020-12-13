@@ -4,6 +4,11 @@ import java.util.HashMap;
 
 public class Cart {
     private HashMap<Integer,OrderItem> orderItems = new HashMap<>();
+    private Customer customer;
+
+    public Cart(Customer customer) {
+        this.customer = customer;
+    }
 
     private OrderItem findOrderItemById(Integer id){
 
@@ -31,12 +36,20 @@ public class Cart {
 
     }
 
-    public void createOnLineOrder(){
+    // fizetési mód
+    // szállítási mód
 
+    public Order createOrder( PAY_MODE payMode , DELIVER_MODE deliveriMode ){
+        Order order;
+
+        if( deliveriMode == DELIVER_MODE.INSHOP ){
+            order = new OrderInShop( customer, deliveriMode, payMode);
+        }else{
+            order = new OrderOnLine( customer, deliveriMode, payMode);
+        }
+
+        return order;
     }
 
-    public void createInShopOrder(){
-
-    }
 
 }

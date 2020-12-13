@@ -6,29 +6,15 @@ import java.util.List;
 public class Order {
     private Customer customer;
     private List<OrderItem> termekek = new ArrayList<>();
-    private String futarUzenet;
-
-    private DELIVER_MODE KezbesitesiMod;
-    private DELIVER_STATUS statusz;
     private PAY_MODE fizetesimod;
+    private DELIVER_MODE kezbesitesiMod;
 
 
     public Order(Customer customer, DELIVER_MODE kezbesitesiMod, PAY_MODE fizetesimod) {
         this.customer = customer;
-        KezbesitesiMod = kezbesitesiMod;
+        kezbesitesiMod = kezbesitesiMod;
         this.fizetesimod = fizetesimod;
 
-        if ( fizetesimod == PAY_MODE.CASH & kezbesitesiMod == DELIVER_MODE.INSHOP){
-            statusz= DELIVER_STATUS.DELIVERED;
-        }
-    }
-
-    public String getFutarUzenet() {
-        return futarUzenet;
-    }
-
-    public void setFutarUzenet(String futarUzenet) {
-        this.futarUzenet = futarUzenet;
     }
 
     public Customer getVevo() {
@@ -40,11 +26,11 @@ public class Order {
     }
 
     public DELIVER_MODE getKezbesitesiMod() {
-        return KezbesitesiMod;
+        return kezbesitesiMod;
     }
 
     public void setKezbesitesiMod(DELIVER_MODE kezbesitesiMod) {
-        KezbesitesiMod = kezbesitesiMod;
+        kezbesitesiMod = kezbesitesiMod;
     }
 
     public PAY_MODE getFizetesimod() {
@@ -55,11 +41,4 @@ public class Order {
         this.fizetesimod = fizetesimod;
     }
 
-    public DELIVER_STATUS getStatusz() {
-        return statusz;
-    }
-
-    public void setStatusz(DELIVER_STATUS statusz) {
-        this.statusz = statusz;
-    }
 }

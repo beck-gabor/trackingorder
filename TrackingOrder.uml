@@ -932,7 +932,7 @@ FAILED_DELIVERY - Nem sikerült a házhozszállítás, futárnak kommentet fűz 
 <XPD:REF name="Views[3]">BZaWhhRvTkWKkVBHg8IC1QAA</XPD:REF>
 <XPD:ATTR name="#Operations" type="integer">3</XPD:ATTR>
 <XPD:OBJ name="Operations[0]" type="UMLOperation" guid="cgjNBMqZ8kK8MHJ5KqcmrgAA">
-<XPD:ATTR name="Name" type="string">finishOrder</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">createOrder</XPD:ATTR>
 <XPD:REF name="Owner">L/nABwyIHkiID7RjB/FppgAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Operations[1]" type="UMLOperation" guid="anagYA+deE+nG6XQZZFuXwAA">
