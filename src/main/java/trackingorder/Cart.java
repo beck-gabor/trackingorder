@@ -43,9 +43,9 @@ public class Cart {
         Order order;
 
         if( deliveriMode == DELIVER_MODE.INSHOP ){
-            order = new OrderInShop( customer, deliveriMode, payMode);
+            order = new OrderInShop( orderItems , customer , payMode );
         }else{
-            order = new OrderOnLine( customer, deliveriMode, payMode);
+            order = new OrderOnLine( orderItems , customer, deliveriMode, payMode);
         }
 
         return order;

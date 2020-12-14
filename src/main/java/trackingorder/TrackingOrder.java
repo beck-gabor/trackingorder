@@ -15,7 +15,9 @@ public class TrackingOrder {
         wh.addTermek( new Product( 2,"Neve-22" , 22.0 ),24  );
 
         System.out.println( wh.getKeszlet(2) );
-        System.out.println( wh.getKeszlet(3) );
+        System.out.println( wh.getKeszlet(1) );
+
+
 
 
 

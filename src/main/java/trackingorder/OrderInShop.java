@@ -1,20 +1,17 @@
 package trackingorder;
 
-public class OrderInShop {
-    private DELIVER_MODE KezbesitesiMod;
-    private DELIVER_STATUS statusz;
+import java.util.HashMap;
 
-    public DELIVER_STATUS getStatusz() {
-        return statusz;
+public class OrderInShop extends Order {
+
+
+    public OrderInShop(HashMap<Integer,OrderItem> orderItems , Customer customer, PAY_MODE payMode){
+        super( orderItems , customer , DELIVER_MODE.INSHOP , payMode  );
     }
 
-    public OrderInShop(DELIVER_MODE kezbesitesiMod, DELIVER_STATUS statusz) {
-        KezbesitesiMod = kezbesitesiMod;
-        this.statusz = DELIVER_STATUS.DELIVERED;
-    }
-
-    public void setStatusz(DELIVER_STATUS statusz) {
-        this.statusz = statusz;
+    @Override
+    public DELIVER_STATUS getStatusz(){
+        return DELIVER_STATUS.DELIVERED;
     }
 
 }
