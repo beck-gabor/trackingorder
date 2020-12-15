@@ -2,7 +2,7 @@ package trackingorder;
 
 public class Stock extends Product {
     private Integer amount;
-    private Integer foglalva;
+    private Integer foglalva=0;
 
     public Stock(Integer id, String name, Double price, Integer amount) {
         super(id, name, price);

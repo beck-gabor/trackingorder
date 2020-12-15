@@ -26,18 +26,20 @@ public class Cart {
         orderItems.put(orderItem.getId(),orderItem);
     }
 
-    public void delOrderItem( OrderItem orderItem){
+    public void delOrderItem( Integer id){
 
-        if (!orderItems.containsKey(orderItem.getId())){
-            throw new CartError( "Item not found in cart, can not delete, ID:" + orderItem.getId() , CartErrorCode.ITEMNOTFOUNDINCART ) ;
+        if (!orderItems.containsKey(id)){
+            throw new CartError( "Item not found in cart, can not delete, ID:" + id , CartErrorCode.ITEMNOTFOUNDINCART ) ;
         }else{
-            orderItems.remove(orderItem.getId());
+            orderItems.remove(id);
         }
 
     }
 
-    // fizetési mód
-    // szállítási mód
+    public Integer countCartItem(){
+        return orderItems.size();
+    }
+
 
     public Order createOrder( PAY_MODE payMode , DELIVER_MODE deliveriMode ){
         Order order;

@@ -3,7 +3,7 @@ package trackingorder;
 import java.nio.file.attribute.AclFileAttributeView;
 
 public class OrderItem extends Product {
-    private Integer amount;
+    private final Integer amount;
     static final Integer AFA_percent=   25;
 
     public OrderItem(Integer id, String name, Double price, Integer amount) {
@@ -16,8 +16,12 @@ public class OrderItem extends Product {
         this.amount = amount;
     }
 
+    public Integer getAmount() {
+        return this.amount;
+    }
+
     public Double getFullPrice(){
-        return super.getPrice() * ( 1 + ( AFA_percent * .01 ));
+        return amount * ( super.getPrice() * ( 1 + ( AFA_percent * .01 ) ));
     }
 
 }
