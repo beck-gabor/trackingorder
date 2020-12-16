@@ -13,7 +13,7 @@ public class WareHouse {
         return stock.get( id);
     }
 
-    public void addTermek( Product product , Integer amount ){
+    public void addTermek( Product product , Integer amount ) throws WareHouseError{
 
         if (stock.containsKey(product.getId()))
             throw new WareHouseError( "Stock can not add, found in WareHouse, ID:" + product.getId() , WareHouseErrorCode.STOCK_ALREADY ) ;
@@ -26,7 +26,7 @@ public class WareHouse {
         s.setAmount( s.getAmount()+darab);
     }
 
-    public void minusKeszlet( Integer id, Integer darab ){
+    public void minusKeszlet( Integer id, Integer darab ) throws WareHouseError{
         Stock s = findStockById(id);
         if( darab > s.getAmount() ){
             throw new WareHouseError( "Stock not enought, ID:" + id , WareHouseErrorCode.STOCK_LOW ) ;
@@ -38,19 +38,18 @@ public class WareHouse {
         return this.findStockById( id ).getAmount();
     }
 
-    public  void foglal( Integer id, Integer darab){
-        Integer saveAmount = 0;
-        Integer saveFoglalva = 0;
+    public Integer getFoglalt( Integer id ){
+        return this.findStockById( id ).getFoglalva();
+    }
+
+    public void foglal( Integer id, Integer darab) throws WareHouseError{
         Stock s = null;
 
         try {
             s = this.findStockById(id);
 
-            saveAmount = s.getAmount();
-            saveFoglalva = s.getFoglalva();
-
             if( s.getAmount() < darab ){
-                throw new WareHouseError( "Unable to reserve, not amount: " + id, WareHouseErrorCode.STOCK_NOTFOUND );
+                throw new WareHouseError( "Unable to reserve, not amount: " + id, WareHouseErrorCode.STOCK_LOW );
             }else{
                 s.setAmount( s.getAmount()-darab);
                 s.setFoglalva( s.getFoglalva() + darab);
@@ -58,40 +57,21 @@ public class WareHouse {
 
         }
         catch( WareHouseError whe  ){
-//            throw new WareHouseError( "Unable to reserve, not found: " + id, whe);
-        }
-        finally {
-            s.setAmount( saveAmount );
-            s.setFoglalva(saveFoglalva);
+            throw new WareHouseError( "Unable to reserve, not found: " + id, whe.getErrorCode());
         }
 
     }
 
-    public void felszabadit( Integer id, Integer darab){
-        Integer saveAmount = 0;
-        Integer saveFoglalva = 0;
+    public void felszabadit( Integer id, Integer darab) throws WareHouseError  {
         Stock s = null;
 
-        try {
-            s = this.findStockById(id);
+        s = this.findStockById(id);
 
-            saveAmount = s.getAmount();
-            saveFoglalva = s.getFoglalva();
-
-            if( s.getFoglalva() < darab ){
-                throw new WareHouseError( "Unable to reserve, not amount: " + id, WareHouseErrorCode.STOCK_NOTRESERVED );
-            }else{
-                s.setAmount( s.getAmount()-darab);
-                s.setFoglalva( s.getFoglalva() + darab);
-            }
-
-        }
-//        catch( WareHouseError whe  ){
-//            throw new WareHouseError( "Unable to reserve, not amount: " + id, ErrorCode.STOCK_NOTRESERVED );
-//        }
-        finally {
-            s.setAmount( saveAmount );
-            s.setFoglalva(saveFoglalva);
+        if( s.getFoglalva() < darab ){
+            throw new WareHouseError( "Unable to reserve, not amount: " + id, WareHouseErrorCode.STOCK_NOTRESERVED );
+        }else{
+            s.setAmount( s.getAmount()+darab);
+            s.setFoglalva( s.getFoglalva() - darab);
         }
 
     }

@@ -55,4 +55,8 @@ public class Order {
     public DELIVER_STATUS getStatusz() {
         return statusz;
     }
+
+    public void setStatusz(DELIVER_STATUS statusz) {
+        this.statusz = statusz;
+    }
 }

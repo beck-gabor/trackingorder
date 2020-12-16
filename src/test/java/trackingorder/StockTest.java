@@ -11,20 +11,24 @@ class StockTest {
     @BeforeEach
     void setUp() {
         s = new Stock( new Product( 1,"Name", 100.0) , 2000 );
-        assertEquals ( s.getAmount() , 2000 , "Stock:getAmount érték hibás." );
+        assertEquals (2000 , s.getAmount() ,
+                "Stock:getAmount érték hibás." );
     }
 
     @Test
     void setAmount() {
         s.setAmount( 100 );
-        assertEquals ( s.getAmount() , 100 , "Stock:setAmount érték hibás." );
+        assertEquals (100 , s.getAmount() ,
+                "Stock:setAmount érték hibás." );
     }
 
     @Test
     void tesztFoglalva() {
-        assertEquals ( s.getFoglalva() , 0 , "Stock:Foglalva induló érték hibás." );
+        assertEquals (0 , s.getFoglalva() ,
+                "Stock:Foglalva induló érték hibás." );
         s.setFoglalva(99);
-        assertEquals ( s.getFoglalva() , 99 , "Stock:Foglalva setFoglalva hibás." );
+        assertEquals ( 99 , s.getFoglalva()  ,
+                "Stock:Foglalva setFoglalva hibás." );
     }
 
 }

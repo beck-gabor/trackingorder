@@ -20,39 +20,38 @@ class OrderTest {
 
     @Test
     void countOrderItem() {
-        assertEquals( order.countOrderItem() , 1 ,
+        assertEquals(1 ,order.countOrderItem() ,
                 "Order:countOrderItem - A kosár elemeinek száma eltér " );
     }
 
     @Test
     void getOrderFullPrice() {
-        assertEquals( order.getOrderFullPrice() , 12.5 ,
+        assertEquals(12.5 , order.getOrderFullPrice() ,
                 "Order:getOrderFullPrice - A kosár elemeinek értéke eltér " );
     }
 
     @Test
     void getVevo() {
-
-        assertEquals( order.getVevo() , customer,
+        assertEquals(customer, order.getVevo() ,
                 "Order:getVevo - A tárolt vevő nem azonos" );
-
     }
 
     @Test
     void getKezbesitesiMod() {
-        assertEquals( order.getKezbesitesiMod() , DELIVER_MODE.INSHOP,
+        assertEquals(DELIVER_MODE.INSHOP, order.getKezbesitesiMod() ,
                 "Order:getKezbesitesiMod - A tárolt kézbesítési mód nem azonos" );
     }
 
     @Test
     void getFizetesimod() {
-        assertEquals( order.getFizetesimod() , PAY_MODE.BANKCARD,
+        assertEquals(PAY_MODE.BANKCARD, order.getFizetesimod() ,
                 "Order:getFizetesimod - A tárolt fizetési mód nem azonos" );
     }
 
     @Test
-    void getStatusz() {
-        assertEquals( order.getStatusz() , DELIVER_STATUS.BOOKED,
-                "Order:getStatusz - A tárolt státusz nem azonos" );
+    void setStatusz() {
+        order.setStatusz(DELIVER_STATUS.BOOKED);
+        assertEquals( DELIVER_STATUS.BOOKED, order.getStatusz(),
+                "Order:setStatusz - A tárolt státusz nem azonos" );
     }
 }

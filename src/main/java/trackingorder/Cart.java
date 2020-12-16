@@ -10,7 +10,7 @@ public class Cart {
         this.customer = customer;
     }
 
-    private OrderItem findOrderItemById(Integer id){
+    private OrderItem findOrderItemById(Integer id) throws CartError {
 
         if (!orderItems.containsKey(id))
             throw new CartError(  "Item not found in cart, ID:" + id  ,  CartErrorCode.ITEMNOTINCART ) ;
@@ -18,7 +18,7 @@ public class Cart {
         return orderItems.get( id);
     }
 
-    public void addOrderItem( OrderItem orderItem){
+    public void addOrderItem( OrderItem orderItem) throws CartError{
 
         if (orderItems.containsKey(orderItem.getId()))
             throw new CartError( "Item found in cart, can not add, ID:" + orderItem.getId() , CartErrorCode.ITEMALREADYINCART ) ;
@@ -26,7 +26,7 @@ public class Cart {
         orderItems.put(orderItem.getId(),orderItem);
     }
 
-    public void delOrderItem( Integer id){
+    public void delOrderItem( Integer id) throws CartError{
 
         if (!orderItems.containsKey(id)){
             throw new CartError( "Item not found in cart, can not delete, ID:" + id , CartErrorCode.ITEMNOTFOUNDINCART ) ;

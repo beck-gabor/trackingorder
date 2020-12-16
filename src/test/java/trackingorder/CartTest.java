@@ -19,7 +19,8 @@ class CartTest {
     void addOrderItem() {
 
         c.addOrderItem( new OrderItem( 1 , "Neve-1" , 10.0 , 1 ));
-        assertEquals ( c.countCartItem() , 1 , "Cart:addOrderItem - Elem hozzáadása hibás." );
+        assertEquals (  1 , c.countCartItem() ,
+                "Cart:addOrderItem - Elem hozzáadása hibás." );
 
         try {
             // Ez az orderItem.Id már szerepel a kosárban, megpróbáljuk újra hozzá adni.
@@ -27,7 +28,7 @@ class CartTest {
             fail("Cart:addOrderItem - Hiányzó ITEMALREADYINCART Exception ");
         }
         catch (  CartError ce ) {
-            assertEquals(ce.getErrorCode(), CartErrorCode.ITEMALREADYINCART ,
+            assertEquals(CartErrorCode.ITEMALREADYINCART ,ce.getErrorCode(),
                         "addOrderItem nem ITEMALREADYINCART hibakóddal tért vissza.");
         }
 
@@ -42,7 +43,7 @@ class CartTest {
             fail("Cart:delOrderItem - Hiányzó .ITEMNOTINCART Exception ");
         }
         catch (  CartError ce ) {
-            assertEquals(ce.getErrorCode(), CartErrorCode.ITEMNOTFOUNDINCART ,
+            assertEquals(CartErrorCode.ITEMNOTFOUNDINCART ,ce.getErrorCode(),
                     "delOrderItem nem ITEMNOTFOUNDINCART hibakóddal tért vissza.");
         }
 
@@ -51,7 +52,8 @@ class CartTest {
         Integer countItem = c.countCartItem();
         c.delOrderItem( 4 );
 
-        assertNotEquals ( c.countCartItem() , countItem , "delOrderItem: Elem törlése nem történt meg." );
+        assertNotEquals ( countItem ,c.countCartItem() ,
+                "delOrderItem: Elem törlése nem történt meg." );
 
     }
 
@@ -59,33 +61,27 @@ class CartTest {
     @Test
     void createOrderInShop() {
         Order o;
-
         o = c.createOrder( PAY_MODE.BANKCARD , DELIVER_MODE.INSHOP );
 
-        assertEquals(o.getFizetesimod(), PAY_MODE.BANKCARD ,
+        assertEquals(PAY_MODE.BANKCARD , o.getFizetesimod(),
                 "Cart:CreateOrder - (InShop) FizetésiMód nem a megadott. " );
-        assertEquals(o.getKezbesitesiMod(), DELIVER_MODE.INSHOP ,
+        assertEquals(DELIVER_MODE.INSHOP , o.getKezbesitesiMod(),
                 "Cart:CreateOrder - (InShop) Szállítási mód nem a megadott. " );
-        assertEquals( c.countCartItem() ,  o.countOrderItem() ,
+        assertEquals(o.countOrderItem() , c.countCartItem() ,
                 "Cart:CreateOrder - (InShop) Rendelés és kosár elemeinek száma eltér " );
-
-
     }
 
     @Test
     void createOrderOnLine() {
         Order o;
-
         o = c.createOrder( PAY_MODE.CASH , DELIVER_MODE.HOUSE );
 
-        assertEquals(o.getFizetesimod(), PAY_MODE.CASH ,
+        assertEquals(PAY_MODE.CASH , o.getFizetesimod(),
                 "Cart:CreateOrder - (OnLine) FizetésiMód nem a megadott. " );
-        assertEquals(o.getKezbesitesiMod(), DELIVER_MODE.HOUSE ,
+        assertEquals(DELIVER_MODE.HOUSE , o.getKezbesitesiMod(),
                 "Cart:CreateOrder - (OnLine) Szállítási mód nem a megadott. " );
-        assertEquals( c.countCartItem() ,  o.countOrderItem() ,
+        assertEquals(o.countOrderItem() , c.countCartItem() ,
                 "Cart:CreateOrder - (OnLine) Rendelés és kosár elemeinek száma eltér " );
-
-
     }
 
 

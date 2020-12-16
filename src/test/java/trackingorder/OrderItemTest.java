@@ -11,12 +11,13 @@ class OrderItemTest {
     @BeforeEach
     void setUp() {
         o = new OrderItem( new Product( 1,"Name", 100.0) , 10 );
-        assertEquals ( o.getAmount() , 10 , "Orderitem:getAmount érték hibás." );
+        assertEquals (10 , o.getAmount() ,
+                "Orderitem:getAmount érték hibás." );
     }
 
     @Test
     void getFullPrice(){
-        assertEquals ( o.getFullPrice() , 1250.0 , "Orderitem:getFullPrice érték hibás." );
+        assertEquals (1250.0 , o.getFullPrice() ,
+                "Orderitem:getFullPrice érték hibás." );
     }
-
 }
