@@ -21,6 +21,10 @@ public class WareHouse {
         stock.put( product.getId() ,  new Stock( product, amount ) );
     }
 
+    public Stock getProdukt( Integer id ){
+        return findStockById(id);
+    }
+
     public void plusKeszlet( Integer id, Integer darab ){
         Stock s = findStockById(id);
         s.setAmount( s.getAmount()+darab);

@@ -3,20 +3,22 @@ package trackingorder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class OrderOnLineTest {
     private Cart c;
     private OrderOnLine order;
+    private WareHouse wh = new WareHouse();
 
     @BeforeEach
     void setUp() {
-        c = new Cart( new Customer( "Cim" , "'Telefon" , "nev", "email") );
-        c.addOrderItem( new OrderItem( 1 , "TermékNév" , 10.0 , 1 ) );
+        wh.addTermek( new Product( 1,"Neve-1" , 10.0 ),1  );
+        wh.addTermek( new Product( 2,"Neve-22" , 22.0 ),24  );
 
-        order = (OrderOnLine) c.createOrder( PAY_MODE.BANKCARD , DELIVER_MODE.HOUSE );
+        c = new Cart( wh, new Customer( "Cim" , "'Telefon" , "nev", "email") );
+        c.addOrderItem( 1,1 );
+
+        order = (OrderOnLine) c.createOrder( payMode.BANKCARD , deliveryMode.HOUSE );
     }
 
     @Test
@@ -33,37 +35,64 @@ class OrderOnLineTest {
 
     @Test
     void getKezbesitesiMod() {
-        assertEquals (DELIVER_MODE.HOUSE , order.getKezbesitesiMod(),
+        assertEquals (deliveryMode.HOUSE , order.getKezbesitesiMod(),
                 "OrderOnLine:getKezbesitesiMod Értéke hibás." );
     }
 
     @Test
     void getFizetesimod() {
-        assertEquals (PAY_MODE.BANKCARD , order.getFizetesimod(),
+        assertEquals (payMode.BANKCARD , order.getFizetesimod(),
                 "OrderOnLine:getFizetesimod Értéke hibás." );
     }
 
     @Test
     void addToFutar() {
         order.addToFutar();
-        assertEquals (DELIVER_STATUS.IN_PROGRESS , order.getStatusz(),
+        assertEquals (deliveryStatus.IN_PROGRESS , order.getStatusz(),
                 "OrderOnLine:addToFutar Státusz értéke hibás." );
     }
 
     @Test
     void sikeresKezbesites() {
         order.sikeresKezbesites();
-        assertEquals (DELIVER_STATUS.DELIVERED , order.getStatusz(),
+        assertEquals (deliveryStatus.DELIVERED , order.getStatusz(),
                 "OrderOnLine:sikeresKezbesites Státusz értéke hibás." );
     }
 
     @Test
     void sikertelenKezbesites() {
         order.sikertelenKezbesites("Kamu üzenet");
-        assertEquals (DELIVER_STATUS.FAILED_DELIVERY , order.getStatusz(),
+        assertEquals (deliveryStatus.FAILED_DELIVERY , order.getStatusz(),
                 "OrderOnLine:sikertelenKezbesites Státusz értéke hibás." );
         assertEquals ("Kamu üzenet" , order.getFutarUzenet(),
                 "OrderOnLine:sikertelenKezbesites Futár üzenet értéke hibás." );
+    }
+
+    @Test
+    void fullLife() {
+        WareHouse whz = new WareHouse();
+        OrderOnLine olorder;
+
+        whz.addTermek( new Product( 1,"Neve-1" , 1.0 ),1  );
+        whz.addTermek( new Product( 2,"Neve-22" , 12.0 ),14  );
+        whz.addTermek( new Product( 3,"Neve-333" , 22.0 ),24  );
+
+        //------------------------
+
+        Customer c = new Customer("Lakcím" , "72/666-111" , "Kalamer Grigor" , "valaki@valah.ol");
+
+        Cart kosar = new Cart( whz , c );
+
+        kosar.addOrderItem(1 , 1 );
+        kosar.addOrderItem(2 , 2 );
+        kosar.addOrderItem(3 , 1 );
+
+        olorder = (OrderOnLine) kosar.createOrder( payMode.BANKCARD , deliveryMode.HOUSE);
+
+        olorder.addToFutar();
+        olorder.sikertelenKezbesites("SeholSenki");
+
+
     }
 
 }

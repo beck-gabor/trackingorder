@@ -1,5 +1,5 @@
 package trackingorder;
 
-public enum PAY_MODE {
+public enum payMode {
     CASH , BANKCARD
 }

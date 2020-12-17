@@ -8,27 +8,27 @@ import java.util.Map.Entry;
 
 
 public class Order {
-    private Customer customer;
+    private final Customer customer;
     private HashMap<Integer,OrderItem> orderItems  = new HashMap<>();
 
-    private PAY_MODE fizetesimod;
-    private DELIVER_MODE kezbesitesiMod;
-    private DELIVER_STATUS statusz;
+    private final payMode fizetesimod;
+    private final deliveryMode kezbesitesiMod;
+    private deliveryStatus statusz;
 
 
-    public Order(HashMap<Integer,OrderItem> orderItems, Customer customer, DELIVER_MODE kezbesitesiMod, PAY_MODE fizetesimod) {
+    public Order(HashMap<Integer,OrderItem> orderItems, Customer customer, deliveryMode kezbesitesiMod, payMode fizetesimod) {
         this.orderItems = orderItems;
         this.customer = customer;
         this.kezbesitesiMod = kezbesitesiMod;
         this.fizetesimod = fizetesimod;
-        this.statusz = DELIVER_STATUS.BOOKED;
+        this.statusz = deliveryStatus.BOOKED;
     }
 
     public Integer countOrderItem(){
         return orderItems.size();
     }
 
-    public double getOrderFullPrice(){
+    public Double getOrderFullPrice(){
         Double price = 0.0;
 
         Iterator<Entry<Integer,OrderItem>> orderItemsIterator = orderItems.entrySet().iterator();
@@ -44,19 +44,31 @@ public class Order {
         return customer;
     }
 
-    public DELIVER_MODE getKezbesitesiMod() {
+    public deliveryMode getKezbesitesiMod() {
         return kezbesitesiMod;
     }
 
-    public PAY_MODE getFizetesimod() {
+    public payMode getFizetesimod() {
         return fizetesimod;
     }
 
-    public DELIVER_STATUS getStatusz() {
+    public deliveryStatus getStatusz() {
         return statusz;
     }
 
-    public void setStatusz(DELIVER_STATUS statusz) {
+    public void setStatusz(deliveryStatus statusz) {
         this.statusz = statusz;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "customer=" + getVevo().getNev()  +
+                ", ItemsCount=" + countOrderItem()+
+                ", FullPrice =" + getOrderFullPrice() +
+                ", fizetesimod=" + getFizetesimod() +
+                ", kezbesitesiMod=" + getKezbesitesiMod() +
+                ", statusz=" + getStatusz() +
+                '}';
     }
 }

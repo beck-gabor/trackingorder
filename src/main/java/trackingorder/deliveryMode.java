@@ -1,5 +1,5 @@
 package trackingorder;
 
-public enum DELIVER_MODE {
+public enum deliveryMode {
     HOUSE, INSHOP;
 }

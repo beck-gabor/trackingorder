@@ -1,5 +1,5 @@
 package trackingorder;
 
-public enum DELIVER_STATUS {
+public enum deliveryStatus {
     BOOKED ,IN_PROGRESS, DELIVERED, FAILED_DELIVERY
 }

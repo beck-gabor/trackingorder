@@ -1,8 +1,8 @@
 package trackingorder;
 
 public class Product {
-    private Integer id;
-    private String name;
+    private final Integer id;
+    private final String name;
     private Double price;
 
     public Product(Integer id, String name, Double price) {
@@ -15,17 +15,10 @@ public class Product {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public Double getPrice() {
         return price;

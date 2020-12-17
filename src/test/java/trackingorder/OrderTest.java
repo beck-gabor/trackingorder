@@ -15,7 +15,7 @@ class OrderTest {
     @BeforeEach
     void setUp() {
         orderItems.put( 1 , new OrderItem( 1, "ElemNeve" , 10.0 , 1) );
-        order = new Order( orderItems, customer, DELIVER_MODE.INSHOP, PAY_MODE.BANKCARD );
+        order = new Order( orderItems, customer, deliveryMode.INSHOP, payMode.BANKCARD );
     }
 
     @Test
@@ -38,20 +38,20 @@ class OrderTest {
 
     @Test
     void getKezbesitesiMod() {
-        assertEquals(DELIVER_MODE.INSHOP, order.getKezbesitesiMod() ,
+        assertEquals(deliveryMode.INSHOP, order.getKezbesitesiMod() ,
                 "Order:getKezbesitesiMod - A tárolt kézbesítési mód nem azonos" );
     }
 
     @Test
     void getFizetesimod() {
-        assertEquals(PAY_MODE.BANKCARD, order.getFizetesimod() ,
+        assertEquals(payMode.BANKCARD, order.getFizetesimod() ,
                 "Order:getFizetesimod - A tárolt fizetési mód nem azonos" );
     }
 
     @Test
     void setStatusz() {
-        order.setStatusz(DELIVER_STATUS.BOOKED);
-        assertEquals( DELIVER_STATUS.BOOKED, order.getStatusz(),
+        order.setStatusz(deliveryStatus.BOOKED);
+        assertEquals( deliveryStatus.BOOKED, order.getStatusz(),
                 "Order:setStatusz - A tárolt státusz nem azonos" );
     }
 }

@@ -5,13 +5,13 @@ import java.util.HashMap;
 public class OrderInShop extends Order {
 
 
-    public OrderInShop(HashMap<Integer,OrderItem> orderItems , Customer customer, PAY_MODE payMode){
-        super( orderItems , customer , DELIVER_MODE.INSHOP , payMode  );
+    public OrderInShop(HashMap<Integer, OrderItem> orderItems, Customer customer, payMode payMode) {
+        super(orderItems, customer, deliveryMode.INSHOP, payMode);
     }
 
     @Override
-    public DELIVER_STATUS getStatusz(){
-        return DELIVER_STATUS.DELIVERED;
+    public deliveryStatus getStatusz() {
+        return deliveryStatus.DELIVERED;
     }
 
 }

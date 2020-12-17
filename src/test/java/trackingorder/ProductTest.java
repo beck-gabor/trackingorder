@@ -26,20 +26,6 @@ public class ProductTest {
     }
 
     @Test
-    void setId() {
-        p.setId(10);
-        assertEquals (10 , this.p.getId() ,
-                "Product SetID hibás." );
-    }
-
-    @Test
-    void setName() {
-        p.setName("RókaRudi");
-        assertEquals ("RókaRudi" , this.p.getName() ,
-                "Product SetName hibás." );
-    }
-
-    @Test
     void setPrice() {
         p.setPrice(33.2);
         assertEquals (33.2 , this.p.getPrice() ,
