@@ -21,8 +21,14 @@ public class WareHouse {
         stock.put( product.getId() ,  new Stock( product, amount ) );
     }
 
-    public Stock getProdukt( Integer id ){
-        return findStockById(id);
+    public Product getProdukt( Integer id ){
+        Product p;
+        Stock s;
+
+        s = findStockById(id);
+        p = new Product( s.getId() , s.getName(), s.getPrice() );
+
+        return p;
     }
 
     public void plusKeszlet( Integer id, Integer darab ){
@@ -47,27 +53,21 @@ public class WareHouse {
     }
 
     public void foglal( Integer id, Integer darab) throws WareHouseError{
-        Stock s = null;
+        Stock s;
 
-        try {
-            s = this.findStockById(id);
+        s = this.findStockById(id);
 
-            if( s.getAmount() < darab ){
-                throw new WareHouseError( "Unable to reserve, not amount: " + id, WareHouseErrorCode.STOCK_LOW );
-            }else{
-                s.setAmount( s.getAmount()-darab);
-                s.setFoglalva( s.getFoglalva() + darab);
-            }
-
-        }
-        catch( WareHouseError whe  ){
-            throw new WareHouseError( "Unable to reserve, not found: " + id, whe.getErrorCode());
+        if( s.getAmount() < darab ){
+            throw new WareHouseError( "Unable to reserve, not amount: " + id, WareHouseErrorCode.STOCK_LOW );
+        }else{
+            s.setAmount( s.getAmount()-darab);
+            s.setFoglalva( s.getFoglalva() + darab);
         }
 
     }
 
     public void felszabadit( Integer id, Integer darab) throws WareHouseError  {
-        Stock s = null;
+        Stock s;
 
         s = this.findStockById(id);
 

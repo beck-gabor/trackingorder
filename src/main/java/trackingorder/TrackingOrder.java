@@ -1,7 +1,5 @@
 package trackingorder;
 
-
-
 public class TrackingOrder {
 
 

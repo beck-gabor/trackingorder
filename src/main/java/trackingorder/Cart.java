@@ -23,18 +23,15 @@ public class Cart {
     }
 
     public void addOrderItem( Integer id, Integer darab ) throws CartError , WareHouseError {
-        Stock s;
+        Product s;
         if (orderItems.containsKey(id))
             throw new CartError( "Item found in cart, can not add, ID:" + id , CartErrorCode.ITEMALREADYINCART ) ;
 
-        try {
-            wh.foglal(id, darab);
-            s = wh.getProdukt( id );
+        wh.foglal(id, darab);
+        s = wh.getProdukt( id );
 
-            orderItems.put(id, new OrderItem( id , s.getName() , s.getPrice() , darab  ) );
+        orderItems.put(id, new OrderItem( id , s.getName() , s.getPrice() , darab  ) );
 
-        }catch ( WareHouseError whe ){
-        }
     }
 
     public void delOrderItem( Integer id) throws CartError{
@@ -55,14 +52,11 @@ public class Cart {
     public Order createOrder(payMode payMode , deliveryMode deliveriMode ){
         Order order;
 
-        Iterator<Map.Entry<Integer,OrderItem>> orderItemsIterator = orderItems.entrySet().iterator();
-        while (orderItemsIterator.hasNext()) {
-            Map.Entry<Integer, OrderItem> set = (Map.Entry<Integer, OrderItem>) orderItemsIterator.next();
-
+        orderItems.forEach((key, value) -> {
             // Amit lefoglaltam felszabadítom és rögtönk csökkentem is vele a raktár készletet.
-            wh.felszabadit( set.getValue().getId() , set.getValue().getAmount() );
-            wh.minusKeszlet( set.getValue().getId() , set.getValue().getAmount() );
-        }
+            wh.felszabadit(value.getId(), value.getAmount());
+            wh.minusKeszlet(value.getId(), value.getAmount());
+        });
 
 
         if( deliveriMode == deliveryMode.INSHOP ){
